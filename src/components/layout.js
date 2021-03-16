@@ -33,7 +33,7 @@ export default ({ children, location }) => (
     `}
     render={data => {
       const siteTitle = data.cosmicjsSettings.metadata.site_heading
-      const homgePageHero =
+      const homePageHero =
         data.cosmicjsSettings.metadata.homepage_hero.local.childImageSharp.fluid
       let header
 
@@ -49,7 +49,7 @@ export default ({ children, location }) => (
           <BackgroundImage
             Tag="div"
             className="post-hero"
-            fluid={homgePageHero}
+            fluid={homePageHero}
             backgroundColor={`#007ACC`}
             style={{
               height: rhythm(14),
