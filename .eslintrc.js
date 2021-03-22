@@ -15,5 +15,12 @@ module.exports = {
       "experimentalObjectRestSpread": true,
       "jsx": true,
     },
-  }
+  },
+  rules: {
+    'arrow-parens': ['error', 'as-needed'],
+    'object-curly-newline': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/jsx-fragments': 'off',
+    'react/prop-types': 'off',
+  },
 }
