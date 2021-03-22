@@ -5,7 +5,6 @@ import get from 'lodash/get'
 import { graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 
-import Bio from '../components/Bio'
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
 
@@ -16,7 +15,6 @@ class BlogPostTemplate extends React.Component {
       this.props,
       'data.cosmicjsSettings.metadata.site_title'
     )
-    const author = get(this, 'props.data.cosmicjsSettings.metadata')
     const location = get(this, 'props.location')
     const { previous, next } = this.props.pageContext
 
@@ -69,7 +67,7 @@ class BlogPostTemplate extends React.Component {
         <BackgroundImage
           Tag="div"
           className="post-hero"
-          fluid={post.metadata.hero.local.childImageSharp.fluid}
+          fluid={get(post, 'metadata.hero.local.childImageSharp.fluid')}
           backgroundColor={`#007ACC`}
           style={{
             marginBottom: rhythm(0.6),
@@ -84,7 +82,6 @@ class BlogPostTemplate extends React.Component {
             marginBottom: rhythm(1),
           }}
         />
-        <Bio settings={author} />
 
         <ul
           style={{
@@ -140,11 +137,6 @@ export const pageQuery = graphql`
     cosmicjsSettings(slug: { eq: "general" }) {
       metadata {
         site_title
-        author_name
-        author_bio
-        author_avatar {
-          imgix_url
-        }
       }
     }
   }
