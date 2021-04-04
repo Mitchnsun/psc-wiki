@@ -3,6 +3,10 @@ module.exports = {
     "browser": true,
     "es6": true,
   },
+  "extends": [
+    "standard",
+    "standard-react"
+  ],
   "plugins": [
     "react",
   ],

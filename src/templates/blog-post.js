@@ -15,11 +15,10 @@ class BlogPostTemplate extends React.Component {
       this.props,
       'data.cosmicjsSettings.metadata.site_title'
     )
-    const location = get(this, 'props.location')
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={location}>
+      <Layout>
         <style>
           {`
           .post-content {

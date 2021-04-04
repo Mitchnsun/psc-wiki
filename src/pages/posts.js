@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import { rhythm } from '../utils/typography'
 
-class BlogIndex extends React.Component {
+class Posts extends React.Component {
   render() {
     const siteTitle = get(
       this,
@@ -43,10 +43,10 @@ class BlogIndex extends React.Component {
   }
 }
 
-export default BlogIndex
+export default Posts
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query PostsQuery {
     allCosmicjsPosts(sort: { fields: [created], order: DESC }, limit: 1000) {
       edges {
         node {

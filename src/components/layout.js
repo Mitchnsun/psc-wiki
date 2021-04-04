@@ -3,15 +3,15 @@ import { Link } from 'gatsby'
 import { StaticQuery, graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 
-import cosmicjsLogo from '../../static/cosmicjs.svg'
-import gatsbyLogo from '../../static/gatsby.png'
 import { rhythm, scale } from '../utils/typography'
+import Footer from './footer'
+import Header from './header'
 
 // Import typefaces
 import 'typeface-montserrat'
 import 'typeface-merriweather'
 
-export default ({ children, location }) => (
+export default ({ children, withBackground }) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
@@ -37,14 +37,7 @@ export default ({ children, location }) => (
         data.cosmicjsSettings.metadata.homepage_hero.local.childImageSharp.fluid
       let header
 
-      let rootPath = `/`
-      let postsPath = `/posts`
-      if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-        rootPath = __PATH_PREFIX__ + `/`
-        postsPath = __PATH_PREFIX__ + `/posts`
-      }
-
-      if (location.pathname === rootPath || location.pathname === postsPath) {
+      if (withBackground) {
         header = (
           <BackgroundImage
             Tag="div"
@@ -83,31 +76,9 @@ export default ({ children, location }) => (
           </BackgroundImage>
         )
       } else {
-        header = (
-          <h3
-            style={{
-              fontFamily: 'Montserrat, sans-serif',
-              marginTop: 0,
-              marginBottom: rhythm(-1),
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              maxWidth: rhythm(24),
-              paddingTop: `${rhythm(1.5)}`,
-            }}
-          >
-            <Link
-              style={{
-                boxShadow: 'none',
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
-              to={'/'}
-            >
-              {siteTitle}
-            </Link>
-          </h3>
-        )
+        header = <Header siteTitle={siteTitle} />
       }
+
       return (
         <div>
           {header}
@@ -122,51 +93,7 @@ export default ({ children, location }) => (
           >
             {children}
           </div>
-          <footer
-            style={{
-              textAlign: 'center',
-              padding: `0 20px 80px 0`,
-            }}
-          >
-            powered by&nbsp;
-            <a
-              target="_blank"
-              href="https://gatsbyjs.org"
-              style={{
-                color: '#191919',
-                boxShadow: 'none',
-              }}
-            >
-              <img
-                src={gatsbyLogo}
-                alt="Gatsby JS"
-                style={{
-                  width: '20px',
-                  margin: '0 4px -3px 2px',
-                }}
-              />
-              <strong>Gatsby</strong>
-            </a>
-            &nbsp;and&nbsp;
-            <a
-              target="_blank"
-              href="https://cosmicjs.com"
-              style={{
-                color: '#191919',
-                boxShadow: 'none',
-              }}
-            >
-              <img
-                src={cosmicjsLogo}
-                alt="Cosmic JS"
-                style={{
-                  width: '18px',
-                  margin: '0 4px -2px 5px',
-                }}
-              />
-              <strong>Cosmic JS</strong>
-            </a>
-          </footer>
+          <Footer />
         </div>
       )
     }}
