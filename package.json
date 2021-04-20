@@ -7,6 +7,8 @@
     "url": "https://github.com/jazibsawar/gatsby-blog-cosmicjs/issues"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
     "gatsby": "^2.20.17",
     "gatsby-background-image": "^1.1.1",
     "gatsby-image": "^2.3.4",

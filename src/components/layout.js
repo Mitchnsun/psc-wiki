@@ -1,11 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { StaticQuery, graphql } from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
 import Footer from './footer'
 import Header from './header'
+import PosterImage from './atoms/PosterImage'
 
 // Import typefaces
 import 'typeface-montserrat'
@@ -38,43 +37,7 @@ export default ({ children, withBackground }) => (
       let header
 
       if (withBackground) {
-        header = (
-          <BackgroundImage
-            Tag="div"
-            className="post-hero"
-            fluid={homePageHero}
-            backgroundColor={`#007ACC`}
-            style={{
-              height: rhythm(14),
-              position: 'relative',
-              marginBottom: `${rhythm(1.5)}`,
-            }}
-          >
-            <h1
-              style={{
-                ...scale(1.3),
-                position: 'absolute',
-                textAlign: 'center',
-                left: 0,
-                right: 0,
-                top: rhythm(4),
-                marginTop: '0',
-                height: rhythm(2.5),
-              }}
-            >
-              <Link
-                style={{
-                  boxShadow: 'none',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                }}
-                to={'/'}
-              >
-                {siteTitle}
-              </Link>
-            </h1>
-          </BackgroundImage>
-        )
+        header = <PosterImage image={homePageHero} title={siteTitle} />
       } else {
         header = <Header siteTitle={siteTitle} />
       }
