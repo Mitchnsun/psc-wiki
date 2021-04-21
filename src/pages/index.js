@@ -83,7 +83,7 @@ export const pageQuery = graphql`
           }
           slug
           title
-          created(formatString: "DD MMMM, YYYY")
+          created(formatString: "DD MMMM, YYYY", locale: "FR")
         }
       }
     }

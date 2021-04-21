@@ -44,7 +44,7 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(1.4),
           }}
         >
-          <Link to="/">← Back to Posts</Link>
+          <Link to="/">← Retour à l'accueil</Link>
         </div>
         <h1
           style={{
@@ -63,15 +63,7 @@ class BlogPostTemplate extends React.Component {
         >
           {post.created}
         </p>
-        <BackgroundImage
-          Tag="div"
-          className="post-hero"
-          fluid={get(post, 'metadata.hero.local.childImageSharp.fluid')}
-          backgroundColor={`#007ACC`}
-          style={{
-            marginBottom: rhythm(0.6),
-          }}
-        />
+        <p>{get(post, 'metadata.description', '')}</p>
         <div
           className="post-content"
           dangerouslySetInnerHTML={{ __html: post.content }}
@@ -120,17 +112,9 @@ export const pageQuery = graphql`
       id
       content
       title
-      created(formatString: "MMMM DD, YYYY")
+      created(formatString: "DD MMMM, YYYY", locale: "FR")
       metadata {
-        hero {
-          local {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
+        description
       }
     }
     cosmicjsSettings(slug: { eq: "general" }) {
