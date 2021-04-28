@@ -73,7 +73,7 @@ class BlogPostTemplate extends React.Component {
         >
           {previous && (
             <li>
-              <Link to={`posts/${previous.slug}`} rel="prev">
+              <Link to={`/posts/${previous.slug}`} rel="prev">
                 ← {previous.title}
               </Link>
             </li>
@@ -81,7 +81,7 @@ class BlogPostTemplate extends React.Component {
 
           {next && (
             <li>
-              <Link to={`posts/${next.slug}`} rel="next">
+              <Link to={`/posts/${next.slug}`} rel="next">
                 {next.title} →
               </Link>
             </li>

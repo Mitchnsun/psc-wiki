@@ -29,22 +29,28 @@ const Post = styled.div`
 `;
 
 class BlogIndex extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { filter: '' };
+  }
+
   render() {
     const siteTitle = get(
       this,
       'props.data.cosmicjsSettings.metadata.site_title'
     )
-    const posts = get(this, 'props.data.allCosmicjsPosts.edges')
+    const posts = get(this, 'props.data.allCosmicjsPosts.edges',[])
     const homePageHero = get(this, 'props.data.cosmicjsSettings.metadata.homepage_hero.local.childImageSharp.fluid')
+    const displayedPost = this.state.filter === '' ? posts : posts.filter(post => post && post.node.metadata.section === this.state.filter)
 
     return (
       <div>
         <Helmet title={siteTitle} />
         <PosterImage image={homePageHero} title={siteTitle} />
         <Container>
-          <Breadcrumb />
+          <Breadcrumb setFilter={filter => this.setState({ filter })} />
           <Posts>
-            {posts.map(({ node }) => {
+            {displayedPost.map(({ node }) => {
               const title = get(node, 'title') || node.slug
               return (
                 <Post key={node.slug}>
@@ -53,7 +59,7 @@ class BlogIndex extends React.Component {
                       margin: `${rhythm(1 / 4)} 0`,
                     }}
                   >
-                    <Link style={{ boxShadow: 'none' }} to={`posts/${node.slug}`}>
+                    <Link style={{ boxShadow: 'none' }} to={`/posts/${node.slug}`}>
                       {title}
                     </Link>
                   </h3>
@@ -80,6 +86,7 @@ export const pageQuery = graphql`
         node {
           metadata {
             description
+            section
           }
           slug
           title

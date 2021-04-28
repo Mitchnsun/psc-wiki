@@ -3,7 +3,7 @@ import { rhythm } from '../../utils/typography'
 
 const Button = styled.button`
   cursor: pointer;
-  border: 1px solid #d9d9d9;
+  border: 1px solid ${props => props.isActive ? '#007acc' : '#d9d9d9'};
   border-radius: 3px;
   margin: 0;
   padding: ${rhythm(1 / 2)};
@@ -29,7 +29,6 @@ const Button = styled.button`
 
   &:active {
     border-color: #007acc;
-    background: #ececec
   }
 
   &::-moz-focus-inner {

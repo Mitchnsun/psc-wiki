@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
 import SwimIcon from './atoms/SwimIcon'
@@ -14,18 +14,24 @@ const Container = styled.menu`
   transform: translateY(-${rhythm(2.5)});
 `;
 
-export default () => (
-  <Container>
-    <Button>
-      <SwimIcon />
-    </Button>
-    <div></div>
-    <Button>
-      <BikeIcon />
-    </Button>
-    <div></div>
-    <Button>
-      <RunIcon />
-    </Button>
-  </Container>
-);
+export default ({ setFilter }) => {
+  const [active, setActive] = useState();
+  const onClick = filter => {
+    setFilter(filter)
+    setActive(filter)
+  }
+
+  return (
+    <Container>
+      <Button onClick={() => onClick('Natation')} isActive={active === 'Natation'}>
+        <SwimIcon />
+      </Button>
+      <Button onClick={() => onClick('Vélo')} isActive={active === 'Vélo'}>
+        <BikeIcon />
+      </Button>
+      <Button onClick={() => onClick('Course à pied')} isActive={active === 'Course à pied'}>
+        <RunIcon />
+      </Button>
+    </Container>
+  );
+}
