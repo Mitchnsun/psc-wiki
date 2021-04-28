@@ -11,7 +11,7 @@ export default ({ siteTitle }) => (
       marginLeft: 'auto',
       marginRight: 'auto',
       maxWidth: rhythm(24),
-      paddingTop: `${rhythm(1.5)}`,
+      padding: `${rhythm(3 / 4)}`,
     }}
   >
     <Link
