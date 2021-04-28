@@ -23,13 +23,13 @@ export default ({ setFilter }) => {
 
   return (
     <Container>
-      <Button onClick={() => onClick('Natation')} isActive={active === 'Natation'}>
+      <Button onClick={() => onClick('Natation')} isActive={active === 'Natation'} aria-label="Filtre Natation">
         <SwimIcon />
       </Button>
-      <Button onClick={() => onClick('Vélo')} isActive={active === 'Vélo'}>
+      <Button onClick={() => onClick('Vélo')} isActive={active === 'Vélo'} aria-label="Filtre Vélo">
         <BikeIcon />
       </Button>
-      <Button onClick={() => onClick('Course à pied')} isActive={active === 'Course à pied'}>
+      <Button onClick={() => onClick('Course à pied')} isActive={active === 'Course à pied'} aria-label="Filtre Course à pied">
         <RunIcon />
       </Button>
     </Container>

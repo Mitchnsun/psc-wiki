@@ -54,15 +54,16 @@ class BlogIndex extends React.Component {
               const title = get(node, 'title') || node.slug
               return (
                 <Post key={node.slug}>
-                  <h3
+                  <h2
                     style={{
                       margin: `${rhythm(1 / 4)} 0`,
+                      fontSize: rhythm(3 / 4),
                     }}
                   >
                     <Link style={{ boxShadow: 'none' }} to={`/posts/${node.slug}`}>
                       {title}
                     </Link>
-                  </h3>
+                  </h2>
                   <small>{node.created}</small>
                   <p
                     dangerouslySetInnerHTML={{ __html: node.metadata.description }}
